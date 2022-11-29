@@ -1,0 +1,41 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ShimmerDemo">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+            <!--
+                Place a dummy brush resource as a temp fix for the issue that single-brush resource dictionary
+                cannot be merged properly, once there are more than 1 in here, we can remove the dummy
+            -->
+            <StaticResource x:Key="ShimmerBackground" ResourceKey="ControlAltFillColorTertiaryBrush" />
+            <StaticResource x:Key="DummyBackground" ResourceKey="ControlAltFillColorTertiaryBrush" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Light">
+            <StaticResource x:Key="ShimmerBackground" ResourceKey="ControlAltFillColorTertiaryBrush" />
+            <StaticResource x:Key="DummyBackground" ResourceKey="ControlAltFillColorTertiaryBrush" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="HighContrast">
+            <StaticResource x:Key="ShimmerBackground" ResourceKey="SystemColorWindowColor" />
+            <StaticResource x:Key="DummyBackground" ResourceKey="SystemColorWindowColor" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <Style TargetType="local:ShimmerControl" >
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="MinWidth" Value="40" />
+        <Setter Property="MinHeight" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ShimmerControl">
+                    <Border
+                        x:Name="Shape"
+                        Background="{TemplateBinding Background}">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
